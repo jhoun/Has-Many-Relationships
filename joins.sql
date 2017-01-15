@@ -81,3 +81,13 @@ SELECT users.first_name, users.last_name, comments.body AS comment_body
   ON comments.post_id = posts.id
   WHERE comments.body LIKE '%SSL%'
   AND posts.content LIKE '%dolorum%';
+
+-- 13
+SELECT users.first_name AS post_author_first_name, users.last_name AS post_author_last_name, posts.title AS post_title, users.username AS comment_author_username, comments.body AS comment_body
+  FROM users
+  INNER JOIN posts
+  ON users.id = posts.users_id
+  INNER JOIN comments
+  ON comments.post_id = posts.id
+  WHERE (comments.body LIKE '%SSL%' OR comments.body LIKE '%firewall%')
+  AND posts.content LIKE '%nemo%';
