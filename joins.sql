@@ -55,3 +55,29 @@ SELECT comments.*, posts.title AS post_title, posts.url AS post_url, comments.bo
   INNER JOIN comments
   ON posts.users_id = comments.post_id
   WHERE posts.create_at > 'January 1, 2015';
+
+-- 10
+SELECT comments.*, posts.title AS post_title, posts.url AS post_url, comments.body AS comment_body
+  FROM posts
+  INNER JOIN comments
+  ON posts.users_id = comments.post_id
+  WHERE comments.body LIKE '%USB%';
+
+-- 11
+SELECT posts.title AS post_title, users.first_name, users.last_name, comments.body AS comment_body
+  FROM users
+  INNER JOIN posts
+  ON users.id = posts.users_id
+  INNER JOIN comments
+  ON comments.post_id = posts.id
+  WHERE comments.body LIKE '%matrix%';
+
+-- 12
+SELECT users.first_name, users.last_name, comments.body AS comment_body
+  FROM users
+  INNER JOIN posts
+  ON users.id = posts.users_id
+  INNER JOIN comments
+  ON comments.post_id = posts.id
+  WHERE comments.body LIKE '%SSL%'
+  AND posts.content LIKE '%dolorum%';
