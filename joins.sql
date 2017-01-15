@@ -25,9 +25,13 @@ SELECT users.username
   ON posts.users_id = users.id
   WHERE posts.create_at > 'January 1, 2015';
 
-
 SELECT posts.title, posts.content, users.username
   FROM users
   INNER JOIN posts
   ON posts.users_id = users.id
   WHERE users.create_at > 'January 1, 2015';
+
+SELECT comments.*, posts.title AS posts_title
+  FROM posts
+  INNER JOIN comments
+  ON posts.users_id = comments.post_id
